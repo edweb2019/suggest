@@ -80,9 +80,31 @@ function saisir(refSaisie) {
 				"data" : {	"debutNom" : contenu, 
 							//"colonne" : "prenom"
 							},
-				"callback":integrer
+				"callback":integrer2
 				});
 	}
+}
+
+function integrer2(chaineJson) {
+	// transformer chaine en objet 
+	//console.log(chaineJson); 
+	var i; 
+	var objetJson = JSON.parse(chaineJson);  
+	console.log(objetJson); 
+
+	// parcourir les étudiants et les afficher 
+	var listeXHTMLEtudiants = ""; 
+	for(i=0;i<objetJson.students.length;i++) {
+		listeXHTMLEtudiants += 
+			"<li>" + objetJson.students[i].nom + "</li>";
+	}
+
+	html("suggestions",listeXHTMLEtudiants);
+
+	if (objetJson.students.length >0)
+		show("suggestions");
+
+	hide("imgLoad");	
 }
 
 function integrer(reponseDuServeur) {
