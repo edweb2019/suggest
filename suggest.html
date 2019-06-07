@@ -68,9 +68,17 @@ function saisir(refSaisie) {
 		// V2 : appels à la page data.php 
 		// à qui on envoie le texte recherché 
 		// dans la chaîne de requete debutNom 
-		ajax({	"url":"data.php",
+		//ajax({	"url":"data.php",
+		//		"data" : {	"debutNom" : contenu, 
+		//					"autreCle" : "autreValeur"
+		//					},
+		//		"callback":integrer
+		//		});
+
+		// V3 : appels à la page data_bdd.php 
+		ajax({	"url":"data_bdd.php",
 				"data" : {	"debutNom" : contenu, 
-							"autreCle" : "autreValeur"
+							//"colonne" : "prenom"
 							},
 				"callback":integrer
 				});
