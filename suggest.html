@@ -62,8 +62,18 @@ function saisir(refSaisie) {
 		// Déclencher une req. ajax...
 		// V1 : fixture vers fixture.php 
 		//console.log("envoi requete");
-		ajax({	"url":"fixture.php",
-				"callback":integrer});
+		//ajax({	"url":"fixture.php",
+		//		"callback":integrer});
+
+		// V2 : appels à la page data.php 
+		// à qui on envoie le texte recherché 
+		// dans la chaîne de requete debutNom 
+		ajax({	"url":"data.php",
+				"data" : {	"debutNom" : contenu, 
+							"autreCle" : "autreValeur"
+							},
+				"callback":integrer
+				});
 	}
 }
 
