@@ -10,6 +10,7 @@
 	height:30px;
 	border:1px solid black;
 	padding:3px;
+	padding-right:25px;
 }
 #suggestions { /*ul */
 	margin:0px;
@@ -32,20 +33,48 @@
 	cursor : pointer; 
 	background-color:lightgrey;
 }
+#imgLoad {
+	position:absolute;
+	top:2px;
+	right:5px;
+	display:none;
+}
 
 </style>
+
+<script src="utils.js"> // RIEN ICI ! 
+</script>
+<script>
+function saisir(refSaisie) {
+	contenu = val(refSaisie); 
+	console.log("Contenu : " + contenu);
+
+	if (contenu == "") hide("imgLoad"); 
+	else {
+		show("imgLoad");
+		// Déclencher une req. ajax... 
+	}
+}
+function choisir(contexte) {
+	// contexte.target est l'élément <li> cliqué 
+	val("saisie",html(contexte.target));
+	hide("suggestions");
+}
+</script>
+
 </head>
 
 <body>
 
 Une phrase ou moins longue ... 
 <div id="cadreSuggest" />
-	<input id="saisie" type="text" />
-	<ul id="suggestions">
+	<input id="saisie" type="text" onkeyup="saisir(this);"/>
+	<ul id="suggestions" onclick="choisir(event);">
 		<li>Thibault</li>
 		<li>Thimoth&eacute;e</li>
 		<li>Thomas</li>
 	</ul>
+	<img id="imgLoad" src="ressources/ajaxLoader.gif" />
 </div>
 
 
