@@ -75,28 +75,56 @@ function saisir(refSaisie) {
 		//		"callback":integrer
 		//		});
 
-		// V3 : appels à la page data_bdd.php 
-		ajax({	"url":"data_bdd.php",
-				"data" : {	"debutNom" : contenu, 
-							//"colonne" : "prenom"
-							},
-				"callback":integrer2
-				});
+		if (cache.baseLocale[contenu] == undefined) {
+			// V3 : appels à la page data_bdd.php 
+			ajax({	"url":"data_bdd.php",
+					"data" : {	"debutNom" : contenu, 
+								//"colonne" : "prenom"
+								},
+					"callback":integrer2
+					});
+		} else {
+			integrer2(JSON.stringify({"promo":2019,
+						"students" : cache.baseLocale[contenu], 
+						"target": contenu})); 
+		}
 	}
 }
+
+
+function jsUcfirst(string) 
+{
+    return string.charAt(0).toUpperCase() + string.toLowerCase().slice(1);
+}
+
+function jsInitiale(string) {
+	return string.charAt(0).toUpperCase() + "."; 
+}
+
+
+var cache = {
+	"suggestionCourantes": [], 
+	"baseLocale" : {}
+}; 
 
 function integrer2(chaineJson) {
 	// transformer chaine en objet 
 	//console.log(chaineJson); 
 	var i; 
 	var objetJson = JSON.parse(chaineJson);  
-	console.log(objetJson); 
+	//console.log(objetJson); 
+
+	cache.suggestionCourantes = objetJson.students;
+	cache.baseLocale[objetJson.target] = objetJson.students; 
+
+	console.log("cache actuel : "); 
+	console.log(cache);
 
 	// parcourir les étudiants et les afficher 
 	var listeXHTMLEtudiants = ""; 
 	for(i=0;i<objetJson.students.length;i++) {
 		listeXHTMLEtudiants += 
-			"<li>" + objetJson.students[i].nom + "</li>";
+			'<li id="' + i + '">' + jsInitiale(objetJson.students[i].prenom) + " " + jsUcfirst(objetJson.students[i].nom) + "</li>";
 	}
 
 	html("suggestions",listeXHTMLEtudiants);
@@ -121,6 +149,18 @@ function choisir(contexte) {
 	val("saisie",html(contexte.target));
 	hide("suggestions");
 }
+
+function choisir2(contexte) {
+	// contexte.target est l'élément <li> cliqué 
+	var indice = contexte.target.id; 
+	var student = cache.suggestionCourantes[indice]; 
+	val("saisie",student.nom.toUpperCase() 
+					+ " "
+					+ jsUcfirst(student.prenom) 
+					+ " (" + student.id + ")"
+					);
+	hide("suggestions");
+}
 </script>
 
 </head>
@@ -130,7 +170,7 @@ function choisir(contexte) {
 Une phrase ou moins longue ... 
 <div id="cadreSuggest" />
 	<input id="saisie" type="text" onkeyup="saisir(this);"/>
-	<ul id="suggestions" onclick="choisir(event);">
+	<ul id="suggestions" onclick="choisir2(event);">
 	</ul>
 	<img id="imgLoad" src="ressources/ajaxLoader.gif" />
 </div>
