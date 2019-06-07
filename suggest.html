@@ -1,0 +1,54 @@
+<html>
+<head>
+<style>
+#cadreSuggest {
+	display:inline;
+	position:relative;
+}
+#saisie {
+	width:200px;
+	height:30px;
+	border:1px solid black;
+	padding:3px;
+}
+#suggestions { /*ul */
+	margin:0px;
+	padding:5px;
+	border:1px solid black;
+	border-top:none;
+	width:188px;
+	position:absolute; 
+	top:25px;
+	left:0px;
+}
+
+#suggestions li {
+	margin:0px;
+	display:block; /* valait list-item*/
+	padding:3px;margin:3px 0px;
+}
+
+#suggestions li:hover {
+	cursor : pointer; 
+	background-color:lightgrey;
+}
+
+</style>
+</head>
+
+<body>
+
+Une phrase ou moins longue ... 
+<div id="cadreSuggest" />
+	<input id="saisie" type="text" />
+	<ul id="suggestions">
+		<li>Thibault</li>
+		<li>Thimoth&eacute;e</li>
+		<li>Thomas</li>
+	</ul>
+</div>
+
+
+
+</body>
+</html>
