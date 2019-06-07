@@ -21,6 +21,7 @@
 	position:absolute; 
 	top:25px;
 	left:0px;
+	display:none;
 }
 
 #suggestions li {
@@ -44,17 +45,37 @@
 
 <script src="utils.js"> // RIEN ICI ! 
 </script>
+<script src="ajax_refacto.js"> 
+// fournit ajax({data:,url:,type:,callback:}) 
+</script>
+
 <script>
 function saisir(refSaisie) {
 	contenu = val(refSaisie); 
 	console.log("Contenu : " + contenu);
 
+	hide("suggestions");
+
 	if (contenu == "") hide("imgLoad"); 
 	else {
 		show("imgLoad");
-		// Déclencher une req. ajax... 
+		// Déclencher une req. ajax...
+		// V1 : fixture vers fixture.php 
+		//console.log("envoi requete");
+		ajax({	"url":"fixture.php",
+				"callback":integrer});
 	}
 }
+
+function integrer(reponseDuServeur) {
+	//console.log("integrer a recu ");
+	//console.log(reponseDuServeur);
+	html("suggestions",reponseDuServeur);
+	if (reponseDuServeur != "")
+		show("suggestions");
+	hide("imgLoad");
+}
+
 function choisir(contexte) {
 	// contexte.target est l'élément <li> cliqué 
 	val("saisie",html(contexte.target));
@@ -70,9 +91,6 @@ Une phrase ou moins longue ...
 <div id="cadreSuggest" />
 	<input id="saisie" type="text" onkeyup="saisir(this);"/>
 	<ul id="suggestions" onclick="choisir(event);">
-		<li>Thibault</li>
-		<li>Thimoth&eacute;e</li>
-		<li>Thomas</li>
 	</ul>
 	<img id="imgLoad" src="ressources/ajaxLoader.gif" />
 </div>
