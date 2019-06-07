@@ -1,0 +1,108 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.10deb1
+-- http://www.phpmyadmin.net
+--
+-- Client: localhost
+-- Généré le: Lun 27 Juin 2016 à 18:53
+-- Version du serveur: 5.5.47-0ubuntu0.14.04.1
+-- Version de PHP: 5.5.9-1ubuntu4.14
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de données: `isig`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `etudiants`
+--
+
+CREATE TABLE IF NOT EXISTS `etudiants` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `prenom` varchar(30) NOT NULL,
+  `nom` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
+
+--
+-- Contenu de la table `etudiants`
+--
+
+INSERT INTO `etudiants` (`id`, `nom`, `prenom`) VALUES
+(1, 'Bourdeaudhuy', 'Thomas'),
+(2,'ABDOUH','YASSINE'),
+(3,'ABECIDAN','RONY'),
+(4,'AIT ABDELMALEK','YOUSSEF'),
+(5,'ALLAIN','CLEMENT'),
+(6,'BAMBA','OUSMANE'),
+(7,'BAOUCH','YASSINE'),
+(8,'BEAL','CLARA'),
+(9,'BEN KHEMIS','MOHAMED ALI'),
+(10,'CHARPIER','THOMAS'),
+(11,'CHARTOIS','JEAN-DESIRE'),
+(12,'COLAS','ARTHUR'),
+(13,'CUESTA JUNIOR','JAIME'),
+(14,'DAKIR','HAMZA'),
+(15,'DUHAMEL','CHARLES'),
+(16,'EFOUA','CHRISTOPHER'),
+(17,'FAN','SHIYU'),
+(18,'FICHET','ALEXANDRE'),
+(19,'FRANCOIS','EMMANUEL'),
+(20,'GARDE','MATHILDE'),
+(21,'GARDIES','SOLENE'),
+(22,'GATINEAU','MAXIME'),
+(23,'GEDEON','NICOLAS'),
+(24,'GERVASI','PIERRICK'),
+(25,'GITTON','HUGO'),
+(26,'GOMEZ DE CADIZ','ALEJANDRA'),
+(27,'GRATTEPANCHE','MAXIMILIEN'),
+(28,'HENDERSON STRADLING','RACHEL'),
+(29,'JAKOMULSKI','LUCA'),
+(30,'JORGE DO MARCO','ROMAIN'),
+(31,'LAURINDO DOS SANTOS','MICAELE'),
+(32,'LE GOFF','JEAN'),
+(33,'LE GUILLOU','EVE'),
+(34,'LEMAIRE','ROBIN'),
+(35,'LEVECQUE','ETIENNE'),
+(36,'LI','QINGWEN'),
+(37,'LIGOT','GUILLAUME'),
+(38,'NAVEZ','TANGUY'),
+(39,'NICOLAS','GABRIEL'),
+(40,'NONIN','JULIEN'),
+(41,'OUSS','JEAN-MARIE'),
+(42,'POITTEVIN','ALBAN'),
+(43,'PONTON','PIERRE-ANDRE'),
+(44,'RENIAUD','JULES'),
+(45,'ROMEO','ALEXANDRE'),
+(46,'SALDANHA FONTENELE SOUSA NASCIMENTO','MARIA'),
+(47,'SCHAPMANN','AXEL'),
+(48,'SUATTON','GUILLAUME'),
+(49,'TAKI','YANIS'),
+(50,'TANG','QING'),
+(51,'TIBURCE','ADRIEN'),
+(52,'VERALDI','LUCIA'),
+(53,'WEI','ANQI'),
+(54,'WU','HAOYU'),
+(55,'DELAGE DE LUGET','VICTOR'),
+(56,'BIONAZ','ROBIN'),
+(57,'BOISARD','NATHAN'),
+(58,'BONNARDEL','THOMAS'),
+(59,'BOUTET BERGIA','HUGO'),
+(60,'BOYER','NATHAN'),
+(61,'BOYER CHAMMARD','THOMAS'),
+(62,'BRONDEAU','VICTOR'),
+(63,'CALVIE','LOUIS'),
+(64,'CESSAC','ALEXANDRE'),
+(65,'CHAPUT','SAMUEL'),
+(66,'Le-Glaz', 'Isabelle');
+
+
